@@ -1,0 +1,14 @@
+.admin-dashboard {
+    display: flex;
+  }
+  
+  .admin-sidebar {
+    width: 200px; /* Adjust based on your preference */
+    background-color: #f0f0f0; /* Light grey background for the sidebar */
+  }
+  
+  .admin-content {
+    flex-grow: 1; /* Take up remaining space */
+    padding: 20px; /* Add some padding around content */
+  }
+  
