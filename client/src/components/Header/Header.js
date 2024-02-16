@@ -76,7 +76,7 @@ function Header({mentori, kategorije}) {
                     </li>
                     <li className='p dropdown' onClick={toggleProgramsDropdown}>
                         <div className='span'>
-                            <span className="mentor-link">Programi</span>
+                            <span><Link to="">Programi</Link></span>
                             <span className="dropdown-icon" onClick={handleProgramsToggle}><Icon className='ikonica' icon="solar:alt-arrow-down-linear" /></span>
                         </div>
                         <ul className={`dropdown-content ${isProgramsDropdownOpen ? "show" : ""}`}>
