@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import { Icon } from '@iconify/react';
-import ApiConfig from '../../assets/ApiConfig';
 
-function Mentori() {
+function Mentori({mentori}) {
   const [showTopBtn, setShowTopBtn] = useState(false);
-  const [mentori, setMentori] = useState([]);
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,9 +18,10 @@ function Mentori() {
     };
 
     window.addEventListener('scroll', handleScroll);
-
+/*
     const fetchMentori = async () => {
       try {
+        setIsLoading(true);
         const response = await fetch(`${ApiConfig.baseUrl}/api/mentori`);
         const data = await response.json();
         setMentori(data);
@@ -31,7 +31,8 @@ function Mentori() {
     };
 
     fetchMentori();
-
+    setIsLoading(false);
+*/
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -44,7 +45,6 @@ function Mentori() {
 
   return (
     <>
-  <Header />
   <div className='naslov'>
     <h1>MENTORI</h1>
   </div>
@@ -60,7 +60,6 @@ function Mentori() {
       </div>
       {showTopBtn && <button onClick={scrollToTop} id="backToTopBtn"><Icon icon="solar:double-alt-arrow-up-linear" /></button>}
     </div>
-    <Footer />
     </>
   );
 }

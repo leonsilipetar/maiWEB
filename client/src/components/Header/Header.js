@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import "../../App.css";
 import logoImage from "../../assets/0001374_MusicArtIncubator-Logo-transparent.png";
+import { Link } from 'react-router-dom';
+import { Icon } from '@iconify/react';
 
-function Header() {
+function Header({mentori, kategorije}) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    console.log("Kategorije:", kategorije)
 
     const [isMentorsDropdownOpen, setIsMentorsDropdownOpen] = useState(false);
     const [isProgramsDropdownOpen, setIsProgramsDropdownOpen] = useState(false);
@@ -57,29 +60,28 @@ function Header() {
                     <li className='p'><a href="/blog">Blog</a></li>
                     <li className='p'><a href="/about">O Nama</a></li>
                     <li className='p dropdown'>
-                        <div className='span'><span><a href="/mentori">Mentori</a></span><span className="dropdown-icon" onClick={handleMentorsToggle}>&#9662;</span>
+                        <div className='span'><span><a href="/mentori">Mentori</a></span><span className="dropdown-icon" onClick={handleMentorsToggle}><Icon className='ikonica' icon="solar:alt-arrow-down-linear" /></span>
 </div>
                         <ul className={`dropdown-content ${isMentorsDropdownOpen ? "show" : ""}`}>
-                            <li><a href="/mentor1">Mentor 1</a></li>
-                            <li><a href="/mentor2">Mentor 2</a></li>
-                            <li><a href="/mentor3">Mentor 3</a></li>
+                        {mentori && mentori.map((mentor) => (
+                            <Link key={mentor._id} to={`/mentori/${mentor._id}`} className="mentor-link">
+                                <li>
+                                <div className='a'>{mentor.ime} {mentor.prezime}</div>
+                                </li>
+                            </Link>
+                            ))}
                         </ul>
                     </li>
                     <li className='p dropdown' onClick={toggleProgramsDropdown}>
-                        <div className='span'><span><a href="/programs">Programi</a></span><span className="dropdown-icon" onClick={handleProgramsToggle}>&#9662;</span></div>
+                        <div className='span'><span><a>Programi</a></span><span className="dropdown-icon" onClick={handleProgramsToggle}><Icon className='ikonica' icon="solar:alt-arrow-down-linear" /></span></div>
                         <ul className={`dropdown-content ${isProgramsDropdownOpen ? "show" : ""}`}>
-                            <li><a href="/program1">Program 1</a></li>
-                            <li><a href="/program2">Program 2</a></li>
-                            <li><a href="/program3">Program 3</a></li>
-                            <li><a href="/program1">Program 4</a></li>
-                            <li><a href="/program2">Program 5</a></li>
-                            <li><a href="/program3">Program 6</a></li>
-                            <li><a href="/program1">Program 7</a></li>
-                            <li><a href="/program2">Program 8</a></li>
-                            <li><a href="/program3">Program 9</a></li>
-                            <li><a href="/program1">Program 10</a></li>
-                            <li><a href="/program2">Program 11</a></li>
-                            <li><a href="/program3">Program 12</a></li>
+                        {kategorije && kategorije.map((kat) => (
+                            <Link key={kat._id} to={`/kategorije/${kat._id}`} className="mentor-link">
+                                <li>
+                                <div className='a'>{kat.naziv}</div>
+                                </li>
+                            </Link>
+                            ))}
                         </ul>
                     </li>
                     <li className='p'><a href="/terms">Opći uvjeti</a></li>

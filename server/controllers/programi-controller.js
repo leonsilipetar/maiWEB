@@ -14,14 +14,26 @@ exports.createProgram = async (req, res) => {
   };
   
   // Get all Programi
-  exports.getAllProgrami = async (req, res) => {
-    try {
-      const programi = await Program.find();
-      res.status(200).json(programi);
-    } catch (error) {
-      res.status(404).json({ message: error.message });
+  // In programi-controller.js
+
+exports.getAllProgrami = async (req, res) => {
+  const kategorijaId = req.query.kategorija; // Get the category ID from query parameters
+
+  try {
+    let query = {};
+
+    // If a category ID is provided, filter programs by that category
+    if (kategorijaId) {
+      query.kategorija = kategorijaId;
     }
-  };
+
+    const programi = await Program.find(query).populate('kategorija', 'naziv');
+    res.status(200).json(programi);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
   
   // Get a single Program by id
   exports.getProgramById = async (req, res) => {

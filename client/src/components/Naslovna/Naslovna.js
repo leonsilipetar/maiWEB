@@ -4,7 +4,7 @@ import Footer from '../Footer/Footer';
 import HeroSection from '../HeroSection/HeroSection';
 import { Icon } from '@iconify/react';
 
-function Naslovna() {
+function Naslovna({mentori}) {
     const [showTopBtn, setShowTopBtn] = useState(false);
 
   useEffect(() => {
@@ -31,10 +31,8 @@ function Naslovna() {
   };
     return (
         <div className="home-page">
-            <Header />
             <HeroSection />
             {showTopBtn && <button onClick={scrollToTop} id="backToTopBtn"><Icon icon="solar:double-alt-arrow-up-linear" /></button>}
-            <Footer />
         </div>
     );
 }

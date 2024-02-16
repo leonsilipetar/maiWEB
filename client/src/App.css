@@ -62,7 +62,11 @@ p, h1, h2, h3, h4, h5, h6 {
   isolation: isolate;
 }
 
-
+.ikonica{
+  color: #ffc400;
+  font-size: 2rem;
+  font-weight: 900;
+}
 .site-header{
   position: fixed;
   width: 100%;
@@ -331,6 +335,12 @@ footer a:hover{
 }
 .mentor:hover{
   color: #ffc400;
+}
+.mentor-detalji{
+  padding: 3rem;
+}
+.mentor-detalji p{
+  padding-top: 4rem;
 }
 @media (max-width: 1200px){
   .dropdown-icon{
