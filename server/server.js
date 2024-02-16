@@ -13,7 +13,7 @@ app.use(
   cors({
     credentials: true,
     origin: function (origin, callback) {
-      const allowedOrigins = ['http://localhost:3000', ''];
+      const allowedOrigins = ['http://localhost:3000', 'https://maiwebsite.onrender.com'];
 
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
